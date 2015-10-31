@@ -1,36 +1,38 @@
 {
-  "name": "unwrap",
+  "name": "gulp-unwrapper",
   "dependencies": {
-    "uglify-js": "~2.4.13"
+    "map-stream": "0.0.6",
+    "unwrap": "0.1.0"
   },
-  "bin": {
-    "unwrap": "bin/unwrap"
-  },
-  "main": "unwrap.js",
+  "main": "gulp-unwrapper.js",
   "devDependencies": {
-    "mocha": "~1.18.2"
+    "fs": "0.0.2",
+    "gulp-util": "^3.0.7",
+    "mocha": "~1.18.2",
+    "should": "^7.1.1"
   },
   "scripts": {
     "test": "mocha test"
   },
-  "description": "unwrap ========",
+  "description": "unwrap with gulp ========",
   "version": "0.1.0",
   "directories": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/samccone/unwrap.git"
+    "url": "git://github.com/paulfalgout/gulp-unwrapper.git"
   },
   "keywords": [
     "unwrap",
     "umd",
-    "ast"
+    "ast",
+    "gulp"
   ],
-  "author": "Sam Saccone",
+  "author": "Paul Falgout",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/samccone/unwrap/issues"
+    "url": "https://github.com/paulfalgout/gulp-unwrapper/issues"
   },
-  "homepage": "https://github.com/samccone/unwrap"
+  "homepage": "https://github.com/paulfalgout/gulp-unwrapper"
 }

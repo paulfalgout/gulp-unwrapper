@@ -1,13 +1,29 @@
 var fs     = require('fs');
-var path   = require('path');
-var unwrap = require('../unwrap');
-var assert = require('assert');
+var gutil = require('gulp-util');
+var unwrapper = require('../gulp-unwrapper');
+var should = require('should');
+
+function fixtureFile(fileName) {
+  return new gutil.File({
+    base: 'test/fixtures',
+    cwd: 'test/',
+    path: 'test/fixtures/' + fileName,
+    contents: fs.readFileSync('test/fixtures/' + fileName)
+  });
+};
 
 describe('unwrapping UMD modules', function() {
   it('should work', function(done) {
-    unwrap(path.resolve(__dirname, 'fixtures/sample.js'), function(e, output) {
-      assert.equal(fs.readFileSync(path.resolve(__dirname, 'fixtures/expected_output.js'), "utf8"), output)
-      done();
+    var stream = unwrapper();
+    var fakeFile = fixtureFile('sample.js');
+
+    stream.once('data', function(newFile){
+        should.exist(newFile);
+        should.exist(newFile.contents);
+        String(newFile.contents).should.equal(fs.readFileSync('test/fixtures/expected_output.js', 'utf8'));
+        done();
     });
+    stream.write(fakeFile);
+
   });
 })

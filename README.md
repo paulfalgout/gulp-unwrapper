@@ -1,23 +1,23 @@
-<h1 align="center">unwrap</h1>
+<h1 align="center">gulp-unwrapper</h1>
 <p align="center">
-  <img width="300px" src="https://raw.githubusercontent.com/samccone/unwrap/master/logo.png"/>
+  <img width="300px" src="https://raw.githubusercontent.com/paulfalgout/gulp-unwrapper/master/logo.png"/>
 </p>
 
-A tool to remove a UMD wrap from a given file.
-[![Build Status](https://travis-ci.org/samccone/unwrap.svg)](https://travis-ci.org/samccone/unwrap)
+A gulp plugin for [unwrap](https://github.com/samccone/unwrap).
+[![Build Status](https://travis-ci.org/paulfalgout/gulp-unwrapper.svg)](https://travis-ci.org/paulfalgout/gulp-unwrapper)
 
 ## How To
 
-`npm install unwrap`
-
-### CLI
-
-`./node_modules/.bin/unwrap <PATH_TO_JS> > my_unwrapped_file.js`
+`npm install gulp-unwrapper`
 
 ### API
 
 ```js
-require('unwrap')("path_to_file.js", function(e, unwrapped) {
+var unwrapper = require('gulp-unwrapper');
 
+gulp.task('unwrap', function() {
+  gulp.src(['./app/*.js'])
+    .pipe(unwrapper())
+    .pipe(gulp.dest('./dist/'))
 });
 ```
